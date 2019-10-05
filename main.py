@@ -23,7 +23,7 @@ class Options(object):
         self.restore = False
         self.W_emb = None
         self.W_class_emb = None
-        self.maxlen = 305
+        self.maxlen = 146
         self.n_words = None
         self.embed_size = 300
         self.lr = 1e-3
