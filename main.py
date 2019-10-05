@@ -18,12 +18,12 @@ from utils import get_minibatches_idx, restore_from_save, tensors_key_in_file, p
 class Options(object):
     def __init__(self):
         self.GPUID = 0
-        self.dataset = 'yahoo'
-        self.fix_emb = True
+        self.dataset = 'yelp_full'
+        self.fix_emb = True # We can always train the required embeddings in our model
         self.restore = False
-        self.W_emb = None
-        self.W_class_emb = None
-        self.maxlen = 146
+        self.W_emb = None # To hold word embeddings
+        self.W_class_emb = None # To hold class embeddings
+        self.maxlen = 501
         self.n_words = None
         self.embed_size = 300
         self.lr = 1e-3
