@@ -27,8 +27,8 @@ class Options(object):
         self.n_words = None
         self.embed_size = 300
         self.lr = 1e-3
-        self.batch_size = 256
-        self.max_epochs = 7
+        self.batch_size = 128
+        self.max_epochs = 10
         self.dropout = 0.5
         self.part_data = False
         self.portion = 1.0 
@@ -235,6 +235,10 @@ def main():
 
                         train_accuracy = train_correct / 500
 
+                        with open("weights.pkl", "wb") as handle:
+                            pickle.dump(sess.run(W_norm_), handle)
+                            pickle.dump(sess.run(W_class), handle)
+                            
                         print("Iteration %d: Training loss %f " % (uidx, loss))
                         print("Train accuracy %f " % train_accuracy)
 
@@ -277,10 +281,6 @@ def main():
 
                 print("Epoch %d: Max Test accuracy %f" % (epoch, max_test_accuracy))
                 saver.save(sess, opt.save_path, global_step=epoch)
-
-            with open("weights.pkl", "wb") as handle:
-                pickle.dump(sess.run(W_norm_), handle)
-                pickle.dump(sess.run(W_class), handle)
                 
             print("Max Test accuracy %f " % max_test_accuracy)
 
