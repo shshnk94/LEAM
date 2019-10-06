@@ -5,7 +5,7 @@ Guoyin Wang
 LEAM
 """
 
-import os, sys, cPickle
+import os, sys, cPickle, pickle
 import tensorflow as tf
 from tensorflow.contrib import layers
 import numpy as np
@@ -79,7 +79,7 @@ def emb_classifier(x, x_mask, y, dropout, opt, class_penalty):
         optimizer=opt.optimizer,
         learning_rate=opt.lr)
 
-    return accuracy, loss, train_op, W_norm, global_step
+    return accuracy, loss, train_op, W_norm, W_class, global_step
 
 
 def main():
@@ -171,7 +171,7 @@ def main():
         keep_prob = tf.placeholder(tf.float32,name='keep_prob')
         y_ = tf.placeholder(tf.float32, shape=[opt.batch_size, opt.num_class],name='y_')
         class_penalty_ = tf.placeholder(tf.float32, shape=())
-        accuracy_, loss_, train_op, W_norm_, global_step = emb_classifier(x_, x_mask_, y_, keep_prob, opt, class_penalty_)
+        accuracy_, loss_, train_op, W_norm_, W_class, global_step = emb_classifier(x_, x_mask_, y_, keep_prob, opt, class_penalty_)
     uidx = 0
     max_val_accuracy = 0.
     max_test_accuracy = 0.
@@ -277,6 +277,11 @@ def main():
 
                 print("Epoch %d: Max Test accuracy %f" % (epoch, max_test_accuracy))
                 saver.save(sess, opt.save_path, global_step=epoch)
+
+            with open("weights.pkl", "wb") as handle:
+                pickle.dump(W_norm_, handle)
+                pickle.dump(W_class, handle)
+                
             print("Max Test accuracy %f " % max_test_accuracy)
 
         except KeyboardInterrupt:
