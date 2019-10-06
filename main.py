@@ -279,8 +279,8 @@ def main():
                 saver.save(sess, opt.save_path, global_step=epoch)
 
             with open("weights.pkl", "wb") as handle:
-                pickle.dump(W_norm_, handle)
-                pickle.dump(W_class, handle)
+                pickle.dump(sess.run(W_norm_), handle)
+                pickle.dump(sess.run(W_class), handle)
                 
             print("Max Test accuracy %f " % max_test_accuracy)
 
