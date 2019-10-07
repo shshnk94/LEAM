@@ -26,7 +26,7 @@ class Options(object):
         self.maxlen = 208
         self.n_words = None
         self.embed_size = 300
-        self.lr = 1e-3
+        self.lr = 0.01
         self.batch_size = 128
         self.max_epochs = 20
         self.dropout = 0.5
