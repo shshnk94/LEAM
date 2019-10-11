@@ -19,7 +19,7 @@ class Options(object):
     def __init__(self):
         self.GPUID = 0
         self.dataset = 'yelp_full'
-        self.fix_emb = True # We can always train the required embeddings in our model
+        self.fix_emb = False # We can always train the required embeddings in our model
         self.restore = False
         self.W_emb = None # To hold word embeddings
         self.W_class_emb = None # To hold class embeddings
