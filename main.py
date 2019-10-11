@@ -28,7 +28,7 @@ class Options(object):
         self.embed_size = 300
         self.lr = 0.01
         self.batch_size = 128
-        self.max_epochs = 200
+        self.max_epochs = 20
         self.dropout = 0.5
         self.part_data = False
         self.portion = 1.0 
