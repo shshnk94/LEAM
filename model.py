@@ -9,11 +9,11 @@ def embedding(features, opt, prefix='', is_reuse=None):
         if opt.fix_emb:
             assert (hasattr(opt, 'W_emb'))
             assert (np.shape(np.array(opt.W_emb)) == (opt.n_words, opt.embed_size))
-            W = tf.get_variable('W', initializer=opt.W_emb, trainable=True)
+            W = tf.get_variable('W', initializer=opt.W_emb, trainable=False)
             print("initialize word embedding finished")
         else:
             weightInit = tf.random_uniform_initializer(-0.001, 0.001)
-            W = tf.get_variable('W', [opt.n_words, opt.embed_size], initializer=weightInit)
+            W = tf.get_variable('W', [opt.n_words, opt.embed_size], initializer=weightInit, trainable=False)
     if hasattr(opt, 'relu_w') and opt.relu_w:
         W = tf.nn.relu(W)
     
