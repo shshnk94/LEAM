@@ -134,7 +134,7 @@ def main():
         opt.class_name = ['worst',
                         'bad',
                         'middle',
-                        'good']
+                        'good',
                         'best']
     x = cPickle.load(open(loadpath, "rb"))
     train, val, test = x[0], x[1], x[2]
