@@ -31,7 +31,7 @@ def embedding_class(features, opt, prefix='', is_reuse=None):
             #print("initialize class embedding finished")
         #else:
         weightInit = tf.random_uniform_initializer(-0.001, 0.001)
-        W = tf.get_variable('W_class', [opt.num_class, opt.embed_size], initializer=weightInit)
+        W = tf.get_variable('W_class', [opt.num_class, opt.embed_size], initializer=weightInit, trainable=True)
     if hasattr(opt, 'relu_w') and opt.relu_w:
         W = tf.nn.relu(W)
     word_vectors = tf.nn.embedding_lookup(W, features)
