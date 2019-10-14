@@ -130,12 +130,12 @@ def main():
     elif opt.dataset == 'yelp_full':
         loadpath = "./data/yelp_full.p"
         embpath = "./data/yelp_full_glove.p"
-        opt.num_class = 2#5
-        opt.class_name = [#'worst',
+        opt.num_class = 5
+        opt.class_name = ['worst',
                         'bad',
-                        #'middle',
-                        'good']
-                        #'best']
+                        'middle',
+                        'good',
+                        'best']
     x = cPickle.load(open(loadpath, "rb"))
     train, val, test = x[0], x[1], x[2]
     train_lab, val_lab, test_lab = x[3], x[4], x[5]
