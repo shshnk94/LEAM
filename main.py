@@ -19,7 +19,7 @@ class Options(object):
     def __init__(self):
         self.GPUID = 0
         self.dataset = 'yelp_full'
-        self.fix_emb = False # We can always train the required embeddings in our model
+        self.fix_emb = True # We can always train the required embeddings in our model
         self.restore = False
         self.W_emb = None # To hold word embeddings
         self.W_class_emb = None # To hold class embeddings
@@ -28,7 +28,7 @@ class Options(object):
         self.embed_size = 300
         self.lr = 0.0001
         self.batch_size = 64
-        self.max_epochs = 150
+        self.max_epochs = 25
         self.dropout = 0.5
         self.part_data = False
         self.portion = 1.0 
