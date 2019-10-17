@@ -136,8 +136,15 @@ def main():
                         'middle',
                         'good',
                         'best']
+        
     elif opt.dataset == 'positive':
         loadpath = "./data/positive.p"
+        embpath = "./data/glove.p"
+        opt.num_class = 2
+        opt.class_name = ['Control', 'Other']
+        
+    elif opt.dataset == 'negative':
+        loadpath = "./data/negative.p"
         embpath = "./data/glove.p"
         opt.num_class = 2
         opt.class_name = ['Control', 'Other']
