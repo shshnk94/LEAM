@@ -262,7 +262,7 @@ def main():
 
                             val_correct += val_accuracy * len(val_index)
 
-                        val_accuracy = val_correct / len(val)
+                        val_accuracy = val_correct / (len(val) + 0.1)
                         print("Validation accuracy %f " % val_accuracy)
 
                         if val_accuracy > max_val_accuracy:
@@ -281,7 +281,7 @@ def main():
                                 test_accuracy = sess.run(accuracy_,feed_dict={x_: x_test_batch, x_mask_: x_test_batch_mask,y_: test_labels, keep_prob: 1.0, class_penalty_: 0.0})
 
                                 test_correct += test_accuracy * len(test_index)                                
-                            test_accuracy = test_correct / len(test)
+                            test_accuracy = test_correct / (len(test)+0.1)
                             print("Test accuracy %f " % test_accuracy)
                             max_test_accuracy = test_accuracy
 
