@@ -217,6 +217,7 @@ def main():
                 kf = get_minibatches_idx(len(train), opt.batch_size, shuffle=True)
                 for _, train_index in kf:
                     uidx += 1
+                    print(train_index)
                     sents = [train[t] for t in train_index]
                     x_labels = [train_lab[t] for t in train_index]
                     x_labels = np.array(x_labels)
