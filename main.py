@@ -18,17 +18,17 @@ from utils import get_minibatches_idx, restore_from_save, tensors_key_in_file, p
 class Options(object):
     def __init__(self):
         self.GPUID = 0
-        self.dataset = 'yelp_full'
+        self.dataset = 'positive'
         self.fix_emb = True # We can always train the required embeddings in our model
         self.restore = False
         self.W_emb = None # To hold word embeddings
         self.W_class_emb = None # To hold class embeddings
-        self.maxlen = 501
+        self.maxlen = 148
         self.n_words = None
         self.embed_size = 300
         self.lr = 0.0001
         self.batch_size = 64
-        self.max_epochs = 50
+        self.max_epochs = 25
         self.dropout = 0.5
         self.part_data = False
         self.portion = 1.0 
@@ -136,6 +136,12 @@ def main():
                         'middle',
                         'good',
                         'best']
+    elif opt.dataset == 'positive':
+        loadpath = "./data/positive.p"
+        embpath = "./data/glove.p"
+        opt.num_class = 2
+        opt.class_name = ['Control', 'Other']
+        
     x = cPickle.load(open(loadpath, "rb"))
     train, val, test = x[0], x[1], x[2]
     train_lab, val_lab, test_lab = x[3], x[4], x[5]
