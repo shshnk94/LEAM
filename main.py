@@ -217,7 +217,6 @@ def main():
                 kf = get_minibatches_idx(len(train), opt.batch_size, shuffle=True)
                 for _, train_index in kf:
                     uidx += 1
-                    print(train_index)
                     sents = [train[t] for t in train_index]
                     x_labels = [train_lab[t] for t in train_index]
                     x_labels = np.array(x_labels)
@@ -229,7 +228,7 @@ def main():
                     if uidx % opt.valid_freq == 0:
                         train_correct = 0.0
                         # sample evaluate accuaccy on 500 sample data
-                        kf_train = get_minibatches_idx(500, opt.batch_size, shuffle=True)
+                        kf_train = get_minibatches_idx(50, opt.batch_size, shuffle=True)
                         for _, train_index in kf_train:
                             train_sents = [train[t] for t in train_index]
                             train_labels = [train_lab[t] for t in train_index]
@@ -240,7 +239,7 @@ def main():
 
                             train_correct += train_accuracy * len(train_index)
 
-                        train_accuracy = train_correct / 500
+                        train_accuracy = train_correct / 50
 
                         with open("weights.pkl", "wb") as handle:
                             pickle.dump(sess.run(W_norm_), handle)
