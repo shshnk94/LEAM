@@ -26,9 +26,9 @@ class Options(object):
         self.maxlen = 148
         self.n_words = None
         self.embed_size = 300
-        self.lr = 1e-7
+        self.lr = 0.0001
         self.batch_size = 4
-        self.max_epochs = 100
+        self.max_epochs = 125
         self.dropout = 0.5
         self.part_data = False
         self.portion = 1.0 
@@ -221,7 +221,7 @@ def main():
         try:
             for epoch in range(opt.max_epochs):
                 print("Starting epoch %d" % epoch)
-                print("Class Embeddings", sess.run(W_class))
+
                 kf = get_minibatches_idx(len(train), opt.batch_size, shuffle=True)
                 for _, train_index in kf:
                     uidx += 1
