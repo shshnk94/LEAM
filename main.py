@@ -221,6 +221,7 @@ def main():
         try:
             for epoch in range(opt.max_epochs):
                 print("Starting epoch %d" % epoch)
+                print("Class Embeddings", sess.run(W_class))
                 kf = get_minibatches_idx(len(train), opt.batch_size, shuffle=True)
                 for _, train_index in kf:
                     uidx += 1
