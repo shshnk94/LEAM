@@ -151,6 +151,7 @@ def main():
         
     x = cPickle.load(open(loadpath, "rb"))
     train, val, test = x[0], x[1], x[2]
+    print("Training data: ", len(train))
     train_lab, val_lab, test_lab = x[3], x[4], x[5]
     wordtoix, ixtoword = x[6], x[7]
     del x
