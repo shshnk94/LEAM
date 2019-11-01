@@ -29,7 +29,7 @@ class Options(object):
         self.lr = 0.0001
         self.batch_size = 32
         self.max_epochs = 500
-        self.dropout = 0.5
+        self.dropout = 0.7
         self.part_data = False
         self.portion = 1.0 
         self.save_path = "./save/"
