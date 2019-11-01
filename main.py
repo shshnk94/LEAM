@@ -18,7 +18,7 @@ from utils import get_minibatches_idx, restore_from_save, tensors_key_in_file, p
 class Options(object):
     def __init__(self):
         self.GPUID = 0
-        self.dataset = 'negative'
+        self.dataset = 'Negative'
         self.fix_emb = True # We can always train the required embeddings in our model
         self.restore = False
         self.W_emb = None # To hold word embeddings
@@ -137,21 +137,20 @@ def main():
                         'good',
                         'best']
         
-    elif opt.dataset == 'positive':
-        loadpath = "./data/positive.p"
+    elif opt.dataset == 'Positive':
+        loadpath = "./data/Positive.p"
         embpath = "./data/glove.p"
         opt.num_class = 2
         opt.class_name = ['Control', 'Other']
         
-    elif opt.dataset == 'negative':
-        loadpath = "./data/negative.p"
+    elif opt.dataset == 'Negative':
+        loadpath = "./data/Negative.p"
         embpath = "./data/glove.p"
         opt.num_class = 2
         opt.class_name = ['Control', 'Other']
         
     x = cPickle.load(open(loadpath, "rb"))
     train, val, test = x[0], x[1], x[2]
-    print("Training data: ", len(train))
     train_lab, val_lab, test_lab = x[3], x[4], x[5]
     wordtoix, ixtoword = x[6], x[7]
     del x
@@ -224,7 +223,6 @@ def main():
                 print("Starting epoch %d" % epoch)
 
                 kf = get_minibatches_idx(len(train), opt.batch_size, shuffle=True)
-                print(len(train), opt.batch_size)
                 for _, train_index in kf:
                     uidx += 1
                     sents = [train[t] for t in train_index]
