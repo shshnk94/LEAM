@@ -223,7 +223,7 @@ def main():
                 print("Starting epoch %d" % epoch)
 
                 kf = get_minibatches_idx(len(train), opt.batch_size, shuffle=True)
-                print(kf)
+                print(len(train), opt.batch_size)
                 for _, train_index in kf:
                     uidx += 1
                     sents = [train[t] for t in train_index]
