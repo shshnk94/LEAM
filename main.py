@@ -173,7 +173,7 @@ def main():
 
     try:
         opt.W_emb = np.array(cPickle.load(open(embpath, 'rb')),dtype='float32')
-        opt.W_class_emb =  load_class_embedding( wordtoix, opt)
+        #opt.W_class_emb =  load_class_embedding( wordtoix, opt)
     except IOError:
         print('No embedding file found.')
         opt.fix_emb = False
