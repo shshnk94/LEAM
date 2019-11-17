@@ -18,12 +18,12 @@ from utils import get_minibatches_idx, restore_from_save, tensors_key_in_file, p
 class Options(object):
     def __init__(self):
         self.GPUID = 0
-        self.dataset = 'Positive'
+        self.dataset = 'Negative'
         self.fix_emb = True # We can always train the required embeddings in our model
         self.restore = False
         self.W_emb = None # To hold word embeddings
         self.W_class_emb = None # To hold class embeddings
-        self.maxlen = 148
+        self.maxlen = 312 #148
         self.n_words = None
         self.embed_size = 300
         self.lr = 0.0001
